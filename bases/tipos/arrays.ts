@@ -13,4 +13,7 @@
 
   // Iteramos sobre cada elemento del arreglo e imprimimos su versión en mayúsculas.
   villians.forEach((v) => console.log(v.toUpperCase()));
+
+  // al tener solo el archivo main.js para compilar si tenemos un error en algun archivo nos dice donde esta
+  // numbers.forEach((v) => console.log(v.toUpperCase()));
 })();
