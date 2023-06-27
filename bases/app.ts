@@ -1,48 +1,80 @@
-(() => {
-  // Funciones Básicas
-  function sumar(a: number, b: number): number {
-    return a + b;
+// Crear interfaces
+
+interface Auto {
+  encender: boolean;
+  velocidadMaxima: number;
+  acelerar(): void;
+}
+
+// Cree una interfaz para validar el auto (el valor enviado por parametro)
+const conducirBatimovil = (auto: Auto): void => {
+  auto.encender = true;
+  auto.velocidadMaxima = 100;
+  auto.acelerar();
+};
+
+const batimovil: Auto = {
+  encender: false,
+  velocidadMaxima: 0,
+  acelerar() {
+    console.log("...... gogogo!!!");
+  },
+};
+
+// Cree una interfaz con que permita utilizar el siguiente objeto
+// utilizando propiedades opcionales
+
+interface Joker {
+  reir?: boolean;
+  comer?: boolean;
+  llorar?: boolean;
+}
+
+const guason: Joker = {
+  reir: true,
+  comer: true,
+  llorar: false,
+};
+
+const reir = (guason: Joker): void => {
+  if (guason.reir) {
+    console.log("JAJAJAJA");
   }
+};
 
-  const contar = (heroes: string[]): number => {
-    return heroes.length;
-  };
-  const superHeroes: string[] = [
-    "Flash",
-    "Arrow",
-    "Superman",
-    "Linterna Verde",
-  ];
-  contar(superHeroes);
+// Cree una interfaz para la siguiente funcion
 
-  //Parametros por defecto
-  const llamarBatman = (llamar: boolean = true): void => {
-    if (llamar) {
-      console.log("Batiseñal activada");
-    }
-  };
+interface CiudadGoticaFn {
+  (ciudadanos: string[]): number;
+}
 
-  llamarBatman();
+const ciudadGotica: CiudadGoticaFn = (ciudadanos: string[]): number => {
+  return ciudadanos.length;
+};
 
-  // Rest?
-  const unirheroes = (...personas: string[]): string => {
-    return personas.join(", ");
-  };
+// Cree una interfaz que obligue crear una clase
+// con las siguientes propiedades y metodos
 
-  // Tipo funcion
-  const noHaceNada = (
-    numero: number,
-    texto: string,
-    booleano: boolean,
-    arreglo: string[]
-  ) => {};
+interface PersonaInterface {
+  nombre: string;
+  edad: number;
+  sexo: string;
+  estadoCivil: string;
+  imprimirBio(): void;
+}
 
-  // Crear el tipo de funcion que acepte la funcion "noHaceNada"
-  let noHaceNadaTampoco: (
-    n: number,
-    s: string,
-    b: boolean,
-    a: string[]
-  ) => void;
-  noHaceNadaTampoco = noHaceNada;
-})();
+/*
+  propiedades:
+    - nombre
+    - edad
+    - sexo
+    - estadoCivil
+    - imprimirBio(): void // en consola una breve descripcion.
+*/
+class Persona implements PersonaInterface {
+  public nombre: string = "";
+  public edad: number = 0;
+  public sexo: string = "";
+  public estadoCivil: string = "";
+  imprimirBio() {}
+}
